@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>aaaaaaaaaaaaaaaaaaaaaaaaa</title>
+<link th:href="@{style.css}" rel="stylesheet"/>
+
+<style type="text/css">
+h1{color:#5F9EA0; font-size:27px;}
+
+</style>
+</head>
+<body>
+<div th:replace="fragments/header ::header"></div>
+<h2>Student List</h2>
+<table>
+<tr>
+<th>Id</th>
+<th>Equipo Local</th>
+<th>Equipo Visitante</th>
+<th>Ronda</th>
+</tr>
+
+<tr th:each="partido : ${partidos}">
+<td th:text="${partido.id}"></td>
+<td th:text="${partido.equipoLocal}"></td>
+<td th:text="${partido.equipoVisitante}"></td>
+<td th:text="${partido.ronda}"></td>
+<td class="actions"><a th:href="@{/partidos/edit/{id}(id=${partido.id})}" class="btn btn-primary">Editar</a>   						
+							<a th:href="@{/partidos/delete/{id}(id=${partido.id})}" class="btn btn-danger">Eliminar</a> </td>  
+</tr>
+</table>
+<a th:href="@{/partidos/new}">Anadir nuevo</a>
+<div th:replace="fragments/footer ::footer"></div>
+
+
+</body>
+</html>
